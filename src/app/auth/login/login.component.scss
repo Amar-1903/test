@@ -1,0 +1,70 @@
+.login-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f7fb;
+}
+
+.login-card {
+  width: 420px;
+  padding: 32px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.logo-section {
+  text-align: center;
+  margin-bottom: 24px;
+
+  .login {
+    font-size: 30px;
+    color: #6b7280;
+    margin-top: 8px;
+
+    .sign {
+      font-size: 14px;
+      color: #6b7280;
+      margin-top: 8px;
+    }
+  }
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.login-btn {
+  width: 100%;
+  height: 44px;
+  font-weight: 500;
+  margin-top: 8px;
+  background-color: #495057;
+}
+
+.forgot {
+  text-align: center;
+  margin-top: 16px;
+
+  a {
+    font-size: 13px;
+    color: #374151;
+    text-decoration: none;
+  }
+}
+
+
+.mat-mdc-raised-button {
+  background-color: #2f3439 !important;
+}
+
+.mat-mdc-raised-button:hover {
+  background-color: #1f2933 !important;
+}
+
+.mat-mdc-raised-button .mdc-button__ripple {
+  display: none;
+}
+
+.mat-mdc-form-field-focus-overlay {
+  background-color: transparent !important;
+}

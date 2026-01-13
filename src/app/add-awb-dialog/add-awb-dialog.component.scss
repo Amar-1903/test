@@ -1,0 +1,21 @@
+.dialog-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.dialog-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 24px 30px;
+    border-radius: 50px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.half-width {
+    flex: 1 1 calc(50% - 15px);
+}

@@ -1,0 +1,191 @@
+<div class="dashboard-page">
+
+    <div class="event-log-card">
+        <div class="card-area-header">
+            <div class="table-activity">
+                <h1 class="page-title">Dashboard</h1>
+            </div>
+
+            <div class="table-btn-group">
+                <div class="normal-search">
+                    <input type="text" class="search" placeholder="Search..." />
+                    <mat-icon class="search-icon">search</mat-icon>
+                </div>
+
+               
+                
+            </div>
+        </div>
+
+        <div class="table-wrapper table-scroll">
+            <table mat-table [dataSource]="dataSource" class="dashboard-table">
+                <ng-container matColumnDef="select">
+                    <th mat-header-cell *matHeaderCellDef sticky class="sticky-col checkbox-col">
+                        <mat-checkbox (change)="toggleAllRows()" [checked]="isAllSelected()">
+                        </mat-checkbox>
+                    </th>
+
+                    <td mat-cell *matCellDef="let row" sticky class="sticky-col checkbox-col">
+                        <mat-checkbox (click)="$event.stopPropagation()" (change)="toggleRow(row)"
+                            [checked]="selection.isSelected(row)">
+                        </mat-checkbox>
+                    </td>
+                </ng-container>
+
+                <!-- checkbox filter column -->
+                <ng-container matColumnDef="selectfilter" class="full-width">
+                    <th mat-header-cell *matHeaderCellDef sticky class="sticky-col checkbox-col">
+                        <mat-checkbox (change)="toggleAllRows()" [checked]="isAllSelected()">
+                        </mat-checkbox>
+                    </th>
+                </ng-container>
+
+                <ng-container matColumnDef="time">
+                    <th mat-header-cell *matHeaderCellDef sticky class="sticky-col time-col">
+                        Time
+                    </th>
+
+                    <td mat-cell *matCellDef="let e" sticky class="sticky-col time-col">
+                        {{ e.time }}
+                    </td>
+                </ng-container>
+
+                <!-- Time filter column -->
+                <ng-container matColumnDef="timefilter">
+                    <th mat-header-cell *matHeaderCellDef> <mat-form-field appearance="outline" class="full-width">
+                            <input matInput placeholder="Enter Time"> </mat-form-field> </th>
+                </ng-container>
+
+                <ng-container matColumnDef="module">
+                    <th mat-header-cell *matHeaderCellDef sticky>Module</th>
+                    <td mat-cell *matCellDef="let e">{{ e.module }}</td>
+                </ng-container>
+
+                <!-- Module filter column -->
+                <ng-container matColumnDef="modulefilter">
+                    <th mat-header-cell *matHeaderCellDef> <mat-form-field appearance="outline" class="full-width">
+                            <input matInput placeholder="Enter Module"> </mat-form-field> </th>
+                </ng-container>
+
+                <ng-container matColumnDef="ref">
+                    <th mat-header-cell *matHeaderCellDef sticky>Reference</th>
+                    <td mat-cell *matCellDef="let e">{{ e.ref }}</td>
+
+                </ng-container>
+                <!-- ref filter column -->
+                <ng-container matColumnDef="reffilter">
+                    <th mat-header-cell *matHeaderCellDef> <mat-form-field appearance="outline" class="full-width">
+                            <input matInput placeholder="Enter Reference"> </mat-form-field> </th>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef sticky>Status</th>
+                    <td mat-cell *matCellDef="let e">
+                        <span class="status" [ngClass]="e.status.toLowerCase()">
+                            {{ e.status }}
+                        </span>
+                    </td>
+                </ng-container>
+
+ <!-- status filter column -->
+                <ng-container matColumnDef="statusfilter">
+                    <th mat-header-cell *matHeaderCellDef>
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-select placeholder="Select Status" multiple>
+                                <mat-option value="in-progress">In Progress</mat-option>
+                                <mat-option value="transmitted">Transmitted</mat-option>
+                                <mat-option value="accepted">Accepted</mat-option>
+                                <mat-option value="rejected">Rejected</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </th>
+                </ng-container>
+
+                                                                        
+                <ng-container matColumnDef="user">
+                    <th mat-header-cell *matHeaderCellDef sticky>Filer</th>
+                    <td mat-cell *matCellDef="let e">{{ e.user }}</td>
+                </ng-container>
+
+                <!-- user filter column -->
+                <ng-container matColumnDef="userfilter">
+                    <th mat-header-cell *matHeaderCellDef> <mat-form-field appearance="outline" class="full-width">
+                            <input matInput placeholder="Enter User"> </mat-form-field> </th>
+                </ng-container>
+
+                <ng-container matColumnDef="carrier">
+                    <th mat-header-cell *matHeaderCellDef sticky>Carrier Code</th>
+                    <td mat-cell *matCellDef="let e">{{ e.carrier }}</td>
+                </ng-container>
+
+                <!-- carrier filter column -->
+                <ng-container matColumnDef="carrierfilter">
+                    <th mat-header-cell *matHeaderCellDef> <mat-form-field appearance="outline" class="full-width">
+                            <input matInput placeholder="Enter Carrier"> </mat-form-field> </th>
+                </ng-container>
+
+                <ng-container matColumnDef="remarks">
+                    <th mat-header-cell *matHeaderCellDef sticky> Remarks</th>
+                    <td mat-cell *matCellDef="let e" class="remarks-cell">
+                        <span class="remarks-text">
+                            {{ e.remarks }}
+                        </span>
+                    </td>
+                </ng-container>
+
+                <!-- remarks filter column -->
+                <ng-container matColumnDef="remarksfilter">
+                    <th mat-header-cell *matHeaderCellDef> <mat-form-field appearance="outline" class="half-width">
+                            <input matInput placeholder="Enter Remarks"> </mat-form-field> </th>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="columns"></tr>
+
+                <tr mat-header-row *matHeaderRowDef="filterColumns" class="filter-field-row"
+                    [class.hidden]="!showFilters"></tr>
+
+                <tr mat-row *matRowDef="let row; columns: columns"></tr>
+
+            </table>
+        </div>
+
+
+        <div class="table-footer">
+            <div class="left-footer">
+                <button mat-stroked-button class="footer-btn">Refresh</button>
+
+                <div class="records-per-page">
+                    <span class="label">Records per page</span>
+
+                    <mat-form-field appearance="outline">
+                        <mat-select [value]="50" yPosition="above">
+
+                            <mat-option value="10">10</mat-option>
+                            <mat-option value="25">25</mat-option>
+                            <mat-option value="50">50</mat-option>
+                            <mat-option value="100">100</mat-option>
+
+                        </mat-select>
+                    </mat-form-field>
+                    <span class="total-count">of {{ totalRecords }}</span>
+                </div>
+            </div>
+
+            <div class="right-footer">
+                <span class="footer-label">Go to Page</span>
+
+                <div class="go-to-page-field">
+                    <mat-form-field appearance="outline">
+                        <input matInput type="text">
+                    </mat-form-field>
+                </div>
+                <button mat-button disabled>Prev</button>
+                <button mat-button class="page-btn active">1</button>
+                <button mat-button class="page-btn">2</button>
+                <button mat-button class="page-btn">3</button>
+                <span class="dots">...</span>
+                <button mat-button class="page-btn">10</button>
+                <button mat-button>Next</button>
+            </div>
+        </div>
+    </div>

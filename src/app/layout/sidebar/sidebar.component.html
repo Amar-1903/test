@@ -1,0 +1,27 @@
+<aside class="sidebar" [class.open]="isOpen">
+  <button mat-button class="toggle-btn" (click)="toggleSidebar()">
+  <mat-icon>{{ isOpen ? 'chevron_left' : 'menu' }}</mat-icon>
+</button>
+
+
+  <mat-nav-list>
+    <div mat-list-item class="side-link" matTooltip="Profile" matTooltipPosition="right" style="cursor: pointer;">
+      <mat-icon class="side-icon">person</mat-icon>
+      <span *ngIf="isOpen" class="side-text">Profile</span>
+    </div>
+    <div mat-list-item class="side-link" matTooltip="Notifications" matTooltipPosition="right" style="cursor: pointer;">
+      <mat-icon class="side-icon">notifications</mat-icon>
+      <span *ngIf="isOpen" class="side-text">Notifications</span>
+    </div>
+    <div mat-list-item class="side-link" matTooltip="Logout" matTooltipPosition="right" style="cursor: pointer;">
+      <mat-icon class="side-icon">logout</mat-icon>
+      <span *ngIf="isOpen" class="side-text">Logout</span>
+    </div>
+    <div mat-list-item class="side-link" matTooltip="Dashboard" matTooltipPosition="right" [routerLink]="['/dashboard']"
+      routerLinkActive="active" (click)="toggleSidebar()" style="cursor: pointer;">
+      <mat-icon class="side-icon">dashboard</mat-icon>
+      <span *ngIf="isOpen" class="side-text">Dashboard</span>
+    </div>
+
+  </mat-nav-list>
+</aside>
