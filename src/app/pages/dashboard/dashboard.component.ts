@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -11,7 +11,13 @@ import { FormControl } from '@angular/forms';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent  {
+export class DashboardComponent implements OnInit {
+
+  loading = true;
+
+  ngOnInit(): void {
+    setTimeout(() => this.loading = false, 2000);
+  }
 
 showFilters = false;
 
