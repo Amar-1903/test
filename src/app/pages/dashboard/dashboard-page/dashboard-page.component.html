@@ -1,0 +1,5 @@
+<app-loader *ngIf="loading" [variant]="'dashboard'"></app-loader>
+
+<div *ngIf="!loading">
+  <app-dashboard></app-dashboard>
+</div>
