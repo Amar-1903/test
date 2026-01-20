@@ -20,10 +20,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';  
 import { InbondTemplateComponent } from './pages/inbond-template/inbond-template/inbond-template.component';
+import { DashboardPageComponent } from './pages/dashboard/dashboard-page/dashboard-page.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardPageComponent },
   {
     path: 'inbond',
     loadChildren: () =>
@@ -40,7 +41,8 @@ const routes: Routes = [
     HeaderComponent,
     SidebarComponent,
     AddAwbDialogComponent,
-    InbondTemplateComponent
+    InbondTemplateComponent,
+    DashboardPageComponent
   ],
   imports: [
     BrowserModule,

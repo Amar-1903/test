@@ -11,13 +11,7 @@ import { FormControl } from '@angular/forms';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
-
-  loading = true;
-
-  ngOnInit(): void {
-    setTimeout(() => this.loading = false, 2000);
-  }
+export class DashboardComponent  {
 
 showFilters = false;
 
