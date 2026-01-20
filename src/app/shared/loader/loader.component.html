@@ -1,0 +1,79 @@
+<div class="cmq-full placeholder-glow" [ngSwitch]="variant">
+
+  <ng-container *ngSwitchCase="'inbond'">
+    <div class="card-area">
+      <div class="card-area-header justify-content-between" *ngIf="showHeader">
+        <div class="table-activity">
+          <div class="search-container">
+            <div class="normal-search">
+              <span class="placeholder search-container-loader"></span>
+            </div>
+          </div>
+        </div>
+        <div class="table-btn-group">
+          <span class="placeholder inbond-status-filter-loader"></span>
+          <span class="placeholder inbond-customstatus-filter-loader"></span>
+          <span class="placeholder cmq-primary-btn-loader"></span>
+        </div>
+      </div>
+
+      <div class="card-area-body p-0" *ngIf="showBody">
+        <div class="dashboard-table-responsive-loader">
+          <table class="table-header-loader">
+            <div class="table-header-loader-container"></div>
+          </table>
+          <div class="table-data-loader-section">
+            <span class="placeholder table-data-field-loader" *ngFor="let i of [].constructor(10)"></span>
+          </div>
+        </div>
+        <div class="paginator paginator-loader" *ngIf="showPaginator">
+          <div class="refresh">
+            <span class="placeholder paginator-refresh-loader mr-2"></span>
+          </div>
+          <div class="responsive-paginator-container-loader">
+            <span class="placeholder paginator-container-loader"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'dashboard'">
+    <div class="card-area">
+      <div class="card-area-header" *ngIf="showHeader">
+        <div class="table-activity">
+          <span class="placeholder page-title-loader"></span>
+        </div>
+        <div class="table-btn-group">
+          <span class="placeholder search-container-loader"></span>
+          <span class="placeholder cmq-primary-btn-loader"></span>
+        </div>
+      </div>
+
+      <div class="card-area-body p-0" *ngIf="showBody">
+        <div class="dashboard-table-responsive-loader">
+          <table class="table-header-loader">
+            <div class="table-header-loader-container"></div>
+          </table>
+          <div class="table-data-loader-section">
+            <span class="placeholder table-row-loader" *ngFor="let i of [].constructor(12)"></span>
+          </div>
+        </div>
+        <div class="paginator paginator-loader" *ngIf="showPaginator">
+          <span class="placeholder paginator-container-loader"></span>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchDefault>
+    <div class="card-area">
+      <div class="card-area-body">
+        <span class="placeholder block-loader"></span>
+        <span class="placeholder block-loader"></span>
+        <span class="placeholder block-loader"></span>
+      </div>
+    </div>
+  </ng-container>
+
+</div>

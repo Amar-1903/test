@@ -16,13 +16,15 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     WidgetOneComponent,
     WidgetTwoComponent,
-    WidgetThreeComponent
+    WidgetThreeComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
@@ -38,6 +40,7 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule
   ],
   exports: [
+    LoaderComponent,
     DashboardComponent,
     WidgetOneComponent,
     WidgetTwoComponent,

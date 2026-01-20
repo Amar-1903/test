@@ -1,4 +1,5 @@
-<div class="inbond-page">
+<app-loader *ngIf="loading" [variant]="'inbond'" [showHeader]="true" [showBody]="true" [showPaginator]="true"> </app-loader>
+<div *ngIf="!loading" class="inbond-page">
   <div class="inbond-left">
     <app-dashboard></app-dashboard>
   </div>
